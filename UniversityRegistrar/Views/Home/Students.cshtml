@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@foreach(var student in Model)
+{
+  <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">@student.GetName()</h3>
+  </div>
+  <div class="panel-body">
+    <p>Enrollment Date: @student.GetEnrollmentDate()</p>
+    @foreach(var course in student.GetAllCourses())
+    {
+      <h3>@course.GetName()</h3>
+    }
+  </div>
+</div>
+}
+
+<a href="/add/student"><button type="button" class="btn btn-success" name="button">Add New Student</button></a>
+
+<a href="/courses"><button type="button" class="btn btn-success" name="button">View All Courses</button></a>
+<a href="/"><button type="button" class="btn btn-warning" name="button">Go Home</button></a>

@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Add a New Student</h1>
+
+<form action="/students" method="post" class="form-group">
+
+  <label for="name">Student name:</label>
+  <input type="text" class="form-control" name="name">
+
+  <label for="date">Student enrollment date:</label>
+  <input type="date" class="form-control" name="date">
+
+  <label for="course">Add a course:</label>
+  <select class="selectpicker" name="course">
+    @foreach(var course in Model)
+    {
+          <option value="@course.GetId()">@course.GetName()</option>
+    }
+  </select>
+<br>
+  <button type="submit" class="btn btn-success" name="button">Add student</button>
+</form>
+
+<a href="/students"><button type="button" class="btn btn-warning" name="button">Back to Students</button></a>
+<a href="/"><button type="button" class="btn btn-warning" name="button">Go Home</button></a>

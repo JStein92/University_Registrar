@@ -14,8 +14,9 @@ namespace UniversityRegistrar.Tests
     }
     public void Dispose()
     {
-          Course.DeleteAll();
+        Course.DeleteAll();
         Student.DeleteAll();
+        Department.DeleteAll();
     }
 
     [TestMethod]
@@ -126,6 +127,24 @@ namespace UniversityRegistrar.Tests
     //  Console.WriteLine("ACTUAL " + actual.GetName() + actual.GetNumber());
 
       Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void AddDepartment_AddDepartmentToStudent_ListOfDepartments()
+    {
+      Department newDepartment = new Department("Science");
+      newDepartment.Save();
+
+      DateTime testTime = new DateTime(1999,04,22,12,00,00);
+      Student newStudent = new Student("Sam", testTime);
+      newStudent.Save();
+
+      newStudent.AddDepartment(newDepartment);
+
+      string expected = newDepartment.GetName();
+      string actual = newStudent.GetDepartment().GetName();
+
+      Assert.AreEqual(expected,actual);
     }
 
 

@@ -12,11 +12,11 @@
   <label for="date">Student enrollment date:</label>
   <input type="date" class="form-control" name="date">
 
-  <label for="course">Add a course:</label>
-  <select class="selectpicker" name="course">
-    @foreach(var course in Model)
+  <label for="department">Add a department:</label>
+  <select class="selectpicker" name="department">
+    @foreach(var department in Model)
     {
-          <option value="@course.GetId()">@course.GetName()</option>
+          <option value="@department.GetId()">@department.GetName()</option>
     }
   </select>
 <br>

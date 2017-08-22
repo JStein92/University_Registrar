@@ -6,13 +6,17 @@
 {
   <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">@student.GetName()</h3>
+    <a href="/delete/student/@student.GetId()"><button type="button" class="btn btn-danger btn-delete" name="button">X</button></a>
+      <a href="/studentdetail/@student.GetId()"><h3 class="panel-title">@student.GetName()</h3></a>
   </div>
   <div class="panel-body">
     <p>Enrollment Date: @student.GetEnrollmentDate()</p>
+    <h3>Department: @student.GetDepartment().GetName()</h3>
+    <br>
+    <h4>Courses:</h4>
     @foreach(var course in student.GetAllCourses())
     {
-      <h3>@course.GetName()</h3>
+      <a href = "/coursedetail/@course.GetId()"><h4>@course.GetName()</h4></a>
     }
   </div>
 </div>
@@ -21,4 +25,7 @@
 <a href="/add/student"><button type="button" class="btn btn-success" name="button">Add New Student</button></a>
 
 <a href="/courses"><button type="button" class="btn btn-success" name="button">View All Courses</button></a>
+
+<a href="/delete/students"><button type="button" class="btn btn-danger" name="button">Delete All Students</button></a>
+
 <a href="/"><button type="button" class="btn btn-warning" name="button">Go Home</button></a>

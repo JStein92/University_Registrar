@@ -1,0 +1,15 @@
+.btn-delete{
+  float: right;
+margin-bottom: 40px;
+}
+.panel-heading
+{
+  margin: 0px;
+
+}
+.panel-heading h3
+{
+
+font-size: 3em;
+padding: 0px;
+}

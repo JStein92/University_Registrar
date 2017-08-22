@@ -16,6 +16,7 @@ namespace UniversityRegistrar.Tests
     {
         Course.DeleteAll();
         Student.DeleteAll();
+        Department.DeleteAll();
     }
 
     [TestMethod]
@@ -105,6 +106,23 @@ namespace UniversityRegistrar.Tests
     //  Console.WriteLine("ACTUAL " + actual.GetName() + actual.GetNumber());
 
       Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void AddDepartment_AddDepartmentToCourse_ListOfDepartments()
+    {
+      Department newDepartment = new Department("Science");
+      newDepartment.Save();
+
+      Course newCourse = new Course("Math",101);
+      newCourse.Save();
+
+      newCourse.AddDepartment(newDepartment);
+
+      string expected = newDepartment.GetName();
+      string actual = newCourse.GetDepartment().GetName();
+
+      Assert.AreEqual(expected,actual);
     }
   }
 

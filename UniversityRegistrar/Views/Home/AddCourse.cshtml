@@ -9,6 +9,16 @@
   <input type="text" class="form-control" name="name">
   <label for="number">Course number:</label>
   <input type="text" class="form-control" name="number">
+
+<label for="department">Choose department</label>
+  <select class="selectpicker" name="department">
+    @foreach(var department in Model)
+    {
+      <option value="@department.GetId()">@department.GetName()</option>
+    }
+  </select>
+<br>
+<br>
   <button type="submit" class="btn btn-success" name="button">Add course</button>
 </form>
 

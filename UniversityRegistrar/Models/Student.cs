@@ -176,6 +176,58 @@ namespace UniversityRegistrar.Models
       cmd.ExecuteNonQuery();
       conn.Close();
     }
+
+    public void AddDepartment(Department newDepartment)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO departments_students (department_id, student_id) VALUES (@departmentId, @studentId);";
+
+      MySqlParameter department_id = new MySqlParameter();
+      department_id.ParameterName = "@departmentId";
+      department_id.Value = newDepartment.GetId();
+      cmd.Parameters.Add(department_id);
+
+      MySqlParameter student_id = new MySqlParameter();
+      student_id.ParameterName = "@studentId";
+      student_id.Value = _id;
+      cmd.Parameters.Add(student_id);
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+    }
+
+    public Department GetDepartment()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT departments.* FROM students
+        JOIN departments_students ON (students.id = departments_students.student_id)
+        JOIN departments ON (departments_students.department_id = departments.id)
+        WHERE students.id = @studentId;";
+
+      MySqlParameter studentId = new MySqlParameter();
+      studentId.ParameterName = "@studentId";
+      studentId.Value = _id;
+      cmd.Parameters.Add(studentId);
+
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+      int id = 0;
+      string name = "";
+
+      while(rdr.Read())
+      {
+         id = rdr.GetInt32(0);
+         name = rdr.GetString(1);
+      }
+      Department newDepartment = new Department(name, id);
+      conn.Close();
+      return newDepartment;
+    }
+
     public List<Course> GetAllCourses()
     {
       MySqlConnection conn = DB.Connection();

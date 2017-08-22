@@ -6,7 +6,9 @@
 {
   <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">@course.GetName()</h3>
+    <a href="/delete/@course.GetId()"><button type="button" class="btn btn-danger btn-delete" name="button">X</button></a>
+    <a href="/coursedetail/@course.GetId()"><h3 class="panel-title">@course.GetName()</h3></a>
+
   </div>
   <div class="panel-body">
     <p>Course number: @course.GetNumber()</p>
@@ -16,4 +18,5 @@
 
 <a href="/add/course"><button type="button" class="btn btn-success" name="button">Add New Course</button></a>
 <a href="/students"><button type="button" class="btn btn-success" name="button">View All Students</button></a>
+<a href="/delete/courses"><button type="button" class="btn btn-danger" name="button">Delete All Courses</button></a>
 <a href="/"><button type="button" class="btn btn-warning" name="button">Go Home</button></a>

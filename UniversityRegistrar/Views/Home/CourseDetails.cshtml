@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+<h1>Course Details for @Model["course"].GetName()</h1>
+<h3>Current Department: @Model["course"].GetDepartment().GetName()</h3>
+<h3>Students Enrolled:</h3>
+<ul>
+  @foreach (var student in @Model["course"].GetAllStudents())
+  {
+    <a href="/studentdetail/@student.GetId()"><li>@student.GetName()</li></a>
+  }
+</ul>
+
+<form action="/courses/update" method="post" class="form-group">
+  <label for="name">Course name:</label>
+  <input type="text" class="form-control" name="name" value='@Model["course"].GetName()'>
+
+  <label for="number">Course number:</label>
+  <input type="text" class="form-control" name="number" value='@Model["course"].GetNumber()'>
+
+  <input type="hidden" name="courseId" value='@Model["course"].GetId()' class="form-control">
+
+
+  <br>
+  <button type="submit" class="btn btn-success" name="button">Update course</button>
+</form>
+
+<a href="/courses"><button type="button" class="btn btn-warning" name="button">Back to Courses</button></a>
+<a href="/"><button type="button" class="btn btn-warning" name="button">Go Home</button></a>

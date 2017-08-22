@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Add a New Department</h1>
+
+<form action="/departments" method="post" class="form-group">
+  
+  <label for="name">Department name:</label>
+  <input type="text" class="form-control" name="name">
+
+  <button type="submit" class="btn btn-success" name="button">Add department</button>
+</form>
+
+<a href="/departments"><button type="button" class="btn btn-warning" name="button">Back to Departments</button></a>
+
+<a href="/"><button type="button" class="btn btn-warning" name="button">Go Home</button></a>

@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@foreach(var department in Model)
+{
+  <div class="panel panel-default">
+  <div class="panel-heading">
+    <a href="/delete/@department.GetId()"><button type="button" class="btn btn-danger btn-delete" name="button">X</button></a>
+    <a href="/departmentdetail/@department.GetId()"><h3 class="panel-title">@department.GetName()</h3></a>
+
+  </div>
+</div>
+}
+
+<a href="/AddDepartment"><button type="button" class="btn btn-success" name="button">Add New Department</button></a>
+
+<a href="/Departments"><button type="button" class="btn btn-success" name="button">View All Departments</button></a>
+
+<a href="/delete/departments"><button type="button" class="btn btn-danger" name="button">Delete All Departments</button></a>
+
+<a href="/"><button type="button" class="btn btn-warning" name="button">Go Home</button></a>
